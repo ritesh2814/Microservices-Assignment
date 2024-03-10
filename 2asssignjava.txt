@@ -1,0 +1,508 @@
+Assignment 2
+++++++++++++
+Ritesh kumar
+ritesh282017@gmail.com
+
+
+
+1.
+   Arithmetic Operators
+  ++++++++++++++++++++++
+	Addition (+)
+	Subtraction (-)
+	Multiplication (*)
+	Division (/)
+	Modulus (Remainder) (%)
+
+	Ex.
+	public class ArithOper {
+   	public static void main(String[] args) {
+        int number1 = 15;
+        int number2 = 4;
+        
+        int sum = number1 + number2;
+        System.out.println("Addition: " + number1 + " + " + number2 + " = " + sum);
+        
+        int difference = number1 - number2;
+        System.out.println("Subtraction: " + number1 + " - " + number2 + " = " + difference);
+        
+        int product = number1 * number2;
+        System.out.println("Multiplication: " + number1 + " * " + number2 + " = " + product);
+        
+        int quotient = number1 / number2;
+        System.out.println("Division: " + number1 + " / " + number2 + " = " + quotient);
+        
+        int remainder = number1 % number2;
+        System.out.println("Modulus: " + number1 + " % " + number2 + " = " + remainder);
+    }
+}
+O/p:-
+Addition: 15 + 4 = 19
+Subtraction: 15 - 4 = 11
+Multiplication: 15 * 4 = 60
+Division: 15 / 4 = 3 
+Modulus: 15 % 4 = 3 
+
+	
+Unary Operators
++++++++++++++++
+Unary plus (+) (indicates positive value, though not necessary)
+Unary minus (-) (negates an expression)
+Increment (++) (increases a value by 1)
+Decrement (--) (decreases a value by 1)
+Logical complement operator (!) (inverts the value of a boolean)
+Ex.
+public class UnaryOperatorsExample {
+    public static void main(String[] args) {
+        int a = +1;
+        int b = -a;
+        
+        ++a;
+        --b;
+        
+        boolean success = !false;
+        
+        System.out.println("a: " + a);
+        System.out.println("b: " + b);
+        System.out.println("success: " + success);
+    }
+}
+o/p:
+a: 2
+b: 0
+success: true
+
+
+
+Assignment Operators
+++++++++++++++++++++
+Simple assignment (=)
+Addition assignment (+=)
+Subtraction assignment (-=)
+Multiplication assignment (*=)
+Division assignment (/=)
+Modulus assignment (%=)
+And assignment (&=)
+Or assignment (|=)
+Xor assignment (^=)
+Left shift assignment (<<=)
+Right shift assignment (>>=)
+Unsigned right shift assignment (>>>=)
+
+
+Relational Operators
+Equal to (==)
+Not equal to (!=)
+Greater than (>)
+Less than (<)
+Greater than or equal to (>=)
+Less than or equal to (<=)
+
+Ex:-
+public class RelationalOper {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 20;
+
+        System.out.println("a == b: " + (a == b));
+        System.out.println("a != b: " + (a != b));
+        System.out.println("a > b: " + (a > b));
+        System.out.println("a < b: " + (a < b));
+        System.out.println("a >= b: " + (a >= b));
+        System.out.println("a <= b: " + (a <= b));
+    }
+}
+
+o/p:-
+a == b: false
+a != b: true
+a > b: false
+a < b: true
+a >= b: false
+a <= b: true
+
+
+
+Logical Operators
+Logical AND (&&)
+Logical OR (||)
+Logical NOT (!)
+Example:-
+public class LogicalOper {
+    public static void main(String[] args) {
+        boolean x = true;
+        boolean y = false;
+
+        System.out.println("x && y: " + (x && y));
+        System.out.println("x || y: " + (x || y));
+        System.out.println("!x: " + (!x));
+        System.out.println("!y: " + (!y));
+    }
+}
+o/p:-
+x && y: false
+x || y: true
+!x: false
+!y: true
+
+
+
+Bitwise Operators
+Bitwise AND (&)
+Bitwise OR (|)
+Bitwise XOR (^)
+Bitwise NOT (~)
+Left shift (<<)
+Signed right shift (>>)
+Unsigned right shift (>>>)
+
+Ternary Operator (Conditional Operator)
+
+? : (evaluates a boolean expression and returns the result of one of the two expressions, depending on whether the boolean expression is true or false)
+Type Comparison Operator
+
+instanceof (compares an object to a specified type)
+example:-
+public class operator {
+    public static void main(String[] args) {
+        int x = 10, y = 5;
+        String result = x > y ? "x > y" : "x <= y";
+        System.out.println(result);
+
+        String s = "Hello";
+        boolean isString = s instanceof String;
+        System.out.println(isString);
+    }
+}
+o/p:-
+x > y
+true
+
+
+
+2.
+
+In Java, there are special shortcuts for adding or subtracting one from a number: increment (++) and decrement (--). we can place these symbols before or after a variable.
+
+When we put them before the variable (++variable or --variable), it means "change the number first, then use it in our code."
+When we put them after the variable (variable++ or variable--), it means "use the number first, then change it."
+public class SimpleExample {
+    public static void main(String[] args) {
+        int num = 10;
+        
+        System.out.println("Original: " + num);
+        
+        // Prefix increment
+        int preInc = ++num; 
+        System.out.println("Prefix Inc: " + preInc);
+        
+        // Postfix increment
+        int postInc = num++; 
+        System.out.println("Postfix Inc, before: " + postInc);
+        System.out.println("Postfix Inc, after: " + num);
+        
+        // Reset
+        num = 10; 
+        System.out.println("Reset: " + num);
+        
+        // Prefix decrement
+        int preDec = --num; 
+        System.out.println("Prefix Dec: " + preDec);
+        
+        // Postfix decrement
+        int postDec = num--; 
+        System.out.println("Postfix Dec, before: " + postDec);
+        System.out.println("Postfix Dec, after: " + num);
+    }
+}
+o/p
+Original: 10
+Prefix Inc: 11 
+Postfix Inc, before: 11 
+Postfix Inc, after: 12 
+Reset: 10 
+Prefix Dec: 9 
+Postfix Dec, before: 9 
+Postfix Dec, after: 8 
+
+
+3.
+conditional operators evaluate a condition and return a value based on whether the condition is true or false. There are two main types of conditional operators in Java.
+1. Ternary Operator: 
+It's like a shortcut for an if-else statement. It checks if something is true or false, and then it picks one of two options based on that. It looks like this:
+
+   - 'condition ? do this if true : do this if false'
+
+   So, if we wanted to check if the number 10 is bigger than 5 and use that to decide what value to give to a variable called `result`, we would write:
+   'int result = (10 > 5) ? 1 : 0;'
+   This means if 10 is indeed bigger than 5, `result` becomes 1. If not, it becomes 0.
+
+2. Logical Operators : These are symbols that let you combine conditions or flip them around. They're really handy in deciding what to do when you have more than one thing to check. The main ones are:
+   - AND ('&&'): This checks if two things are true at the same time.
+   - OR ('||'): This checks if at least one of two things is true.
+   - NOT ('!'): This flips the truth of something. If it was true, it becomes false, and vice versa.
+
+
+
+
+4.
+Operators in programming languages like Java can be categorized based on how many values (operands) they work with.
+
+1. Unary Operators: These take a single value and do something with it. For example:
+   - The `!` operator flips a boolean value. If we have `boolean isRaining = false;`, using `!isRaining` would evaluate to `true`.
+   - The `++` operator adds one to its operand. If we have `int count = 9;`, then `++count;` would make `count` equal to `10`.
+
+2. Binary Operators: These need two values to work. They're what you often use for basic math or comparisons. For instance:
+   - The `+` operator adds two numbers together. If we write `int sum = 5 + 3;`, `sum` would be `8`.
+   - The `==` operator checks if two values are the same. With `if (5 == 5)`, the condition is `true` because both sides are equal.
+
+3.Ternary Operator: This is a special case that uses three values. It's a compact form of an if-else statement. Here's how it works:
+   - You have a condition followed by a question mark (`?`), then the value to use if the condition is true, followed by a colon (`:`), and finally the value to use if the condition is false. For example, `int result = (7 > 3) ? 10 : 5;` would make `result` equal to `10` because the condition `(7 > 3)` is true.
+
+
+5.
+Conditional statements in Java are used to make decisions based on certain conditions. These statements execute different blocks of code based on whether a condition is true or false.
+1. if Statement: It evaluates a condition and executes a block of code if the condition is true.
+   - Example:
+     int age = 18;
+     if (age >= 18) {
+         System.out.println("You are an adult.");
+     }
+     This will print "You are an adult." because the condition `age >= 18` is true.
+
+2. if-else Statement: It adds an alternative path; if the condition is false, the code in the `else` block runs instead.
+   - Example:
+     int score = 75;
+     if (score >= 80) {
+         System.out.println("Grade: A");
+     } else {
+         System.out.println("Grade: B");
+     }
+     This will print "Grade: B" because the condition `score >= 80` is false.
+
+3. else-if Ladder: Used when you have multiple conditions to evaluate. It checks each condition in order, and when a true condition is found, the corresponding block of code runs.
+   - Example:
+     int marks = 85;
+     if (marks < 50) {
+         System.out.println("Fail");
+     } else if (marks >= 50 && marks < 60) {
+         System.out.println("D Grade");
+     } else if (marks >= 60 && marks < 70) {
+         System.out.println("C Grade");
+     } else if (marks >= 70 && marks < 80) {
+         System.out.println("B Grade");
+     } else if (marks >= 80 && marks <= 100) {
+         System.out.println("A Grade");
+     } else {
+         System.out.println("Invalid marks");
+     }
+     This prints "A Grade" because `marks` falls within the `80 to 100` range.
+
+4. switch Statement: Offers a more readable way to handle multiple conditions based on the same variable. It executes one block of code from multiple options based on the variable's value.
+   - Example:
+     int day = 4;
+     switch (day) {
+         case 1:
+             System.out.println("Monday");
+             break;
+         case 2:
+             System.out.println("Tuesday");
+             break;
+         case 3:
+             System.out.println("Wednesday");
+             break;
+         case 4:
+             System.out.println("Thursday");
+             break;
+         case 5:
+             System.out.println("Friday");
+             break;
+         case 6:
+             System.out.println("Saturday");
+             break;
+         case 7:
+             System.out.println("Sunday");
+             break;
+         default:
+             System.out.println("Invalid day");
+     }
+     This will print "Thursday" because `day` is set to 4.
+
+
+6.
+The syntax for an if-else statement in Java :
+if (condition) {
+    // Block of code to execute if the condition is true
+} else {
+    // Block of code to execute if the condition is false
+}
+
+if: "If this thing is true, then do the following." It marks the beginning of your decision-making.
+condition: This is just a question that can be answered with yes (true) or no (false). Java checks this question, and depending on the answer, it decides what to do next.
+{ } after if: These curly brackets hold the instructions that Java should follow if the answer to our question is yes (true).
+else: This part is like saying "Otherwise, do this instead." It's what Java turns to if the answer to your initial question is no (false).
+{ } after else: These curly brackets contain what you want Java to do if the answer to your question is no (false).
+
+example:
+int number = 10;
+if (number > 0) {
+    System.out.println("The number is positive.");
+} else {
+    System.out.println("The number is not positive.");
+}
+o/p:- The number is positive.
+
+
+7.
+there are three main types of iterative statements that allow developers to create loops, executing a set of statements repeatedly based on certain conditions:
+
+for Loop:
+The for loop is commonly used when the number of iterations is fixed and known in advance.
+It consists of three parts: initialization, condition, and increment/decrement.
+Syntax:
+for (initialization; condition; increment/decrement) {
+    // Body of the loop
+}
+
+Example:
+for (int i = 1; i < 6; i++) {
+    System.out.print(i + ", ");
+}
+// Output: 1, 2, 3, 4, 5
+
+while Loop:
+The while loop iterates as long as a specified condition remains true.
+It checks the condition before executing the loop body.
+Syntax:
+while (condition) {
+    // Body of the loop
+}
+
+do-while Loop:
+The do-while loop executes the loop body at least once, even if the condition is initially false.
+It checks the condition after executing the loop body.
+Syntax:
+do {
+    // Body of the loop
+} while (condition);
+
+8.
+an array is a dynamically-created object that serves as a container to hold a fixed number of values of the same type.
+--An array is a data structure where we store similar elements.
+--It contains elements of a single data type.
+--The elements are stored in a contiguous memory location.
+--Arrays can hold primitive values (such as int, char, etc.) or object references (non-primitive types) depending on the array’s definition.
+--The actual storage behavior differs for primitive types and objects: primitive values may be stored in contiguous memory, while class objects reside in the heap segment.
+
+Declaration and Initialization:
+To declare an array, we specify the element type followed by the array name and square brackets ([]).
+
+Example declarations:
+int[] intArray; // Valid declarations
+int intArray[]; // Also valid
+MyClass[] myClassArray; // Array of user-defined class objects
+
+Accessing Elements:
+Array elements are ordered, starting from index 0.
+We can access elements using their indices.
+Example:
+intArray[0] = 10; // Initialize first element
+intArray[1] = 20; // Initialize second element
+
+9.
+Declare the Array:
+To declare an array, specify the element type followed by the array name and square brackets ([]).
+Example:
+int[] myNum; // Declares an array of integers
+String[] cars; // Declares an array of strings
+
+Instantiate the Array:
+Use the new keyword to create an instance of the array.
+Specify the size of the array (i.e., how many elements it can hold).
+Example:
+myNum = new int[5]; // Creates an integer array with 5 elements
+cars = new String[4]; // Creates a string array with 4 elements
+
+Initialize the Array:
+You can assign values to the array elements using an array literal (a comma-separated list of values enclosed in curly braces {}).
+Example:
+cars = new String[]{"Volvo", "BMW", "Ford", "Mazda"};
+myNum = new int[]{10, 20, 30, 40};
+
+10.
+StringBuffer:
+
+Thread-Safety:
+StringBuffer is designed to be thread-safe.
+All public methods in StringBuffer are synchronized, ensuring that only one thread can access the object at a time.
+
+Mutability:
+StringBuffer represents a mutable sequence of characters.
+It allows modifications to the character sequence without creating a new object.
+Use Cases:
+Use StringBuffer when you need a thread-safe, mutable string.
+Commonly used in multi-threaded environments.
+Example:
+public class StringBufferExample {
+    public static void main(String[] args) {
+        StringBuffer str = new StringBuffer("Hello");
+        str.append(" World!");
+        System.out.println(str);
+    }
+}
+// Output: Hello World!
+
+
+StringBuilder:
+
+Thread-Safety:
+StringBuilder is not thread-safe.
+None of its methods are synchronized.
+
+Mutability:
+StringBuilder also represents a mutable sequence of characters.
+Like StringBuffer, it allows efficient modifications.
+
+Use Cases:
+Use StringBuilder when thread safety is not a concern (single-threaded scenarios).
+Generally preferred for better performance due to lack of synchronization overhead.
+Example:
+public class StringBuilderExample {
+    public static void main(String[] args) {
+        StringBuilder str = new StringBuilder("Hello");
+        str.append(" World!");
+        System.out.println(str);
+    }
+}
+// Output: Hello World!
+
+Conversion from StringBuffer to StringBuilder:
+To convert from StringBuffer to StringBuilder, first use toString() to get a String representation, and then create a StringBuilder.
+Example:
+Java
+
+StringBuffer sbr = new StringBuffer("Geeks");
+String str = sbr.toString();
+StringBuilder sbl = new StringBuilder(str);
+System.out.println(sbl);
+// Output: Geeks
+
+Conversion from StringBuilder to StringBuffer:
+Similar to the above conversion, convert StringBuilder to String and then create a StringBuffer.
+Example:
+StringBuilder sb = new StringBuilder("Java");
+String strFromBuilder = sb.toString();
+StringBuffer sbuff = new StringBuffer(strFromBuilder);
+System.out.println(sbuff);
+// Output: Java
+
+
+
+
+
+
+
+
+
+
+
