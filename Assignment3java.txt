@@ -1,0 +1,276 @@
+Assignment 3
+++++++++++++
+Ritesh kumar
+ritesh282017@gmail.com
+
+
+1. 
+	  JDK
++++++++++++++++++++++++++
++   JRE	+ Development   +
++	tools		+
++  +++++++++++++++++++  +
++  +	JVM +        +	+
++  + class Libraries +	+
++  +++++++++++++++++++	+
++++++++++++++++++++++++++		
+
+
+JVM (Java Virtual Machine):
+Abstract Machine: JVM is an abstract machine that provides a runtime environment for executing Java bytecode. It doesn’t physically exist but is crucial for running Java programs.
+Platform Independence: JVM ensures that Java source code is platform-agnostic, allowing Java programs to run consistently across different operating systems.
+Tasks:
+Loads code: JVM loads compiled Java bytecode.
+Verifies code: It checks bytecode for security and correctness.
+Executes code: JVM interprets and executes the bytecode.
+Provides runtime environment: It manages memory, threads, and other runtime aspects.
+
+JRE (Java Runtime Environment):
+Implementation of JVM: JRE is the implementation of JVM. It physically exists and includes a set of libraries and other files that JVM uses at runtime.
+Runtime Environment: JRE provides the necessary environment for running Java applications and applets.
+Components:
+JVM: Part of JRE.
+Libraries: Includes standard Java libraries.
+Other files: Necessary resources for runtime execution.
+
+JDK (Java Development Kit):
+Software Development Environment: JDK is a software development environment used for creating Java applications and applets.
+Components:
+JRE: JDK includes JRE.
+Development Tools: JDK contains tools like javac (for compiling Java source code), jar (for archiving), and Javadoc (for generating documentation).
+Private JVM: JDK has its own private JVM for development purposes.
+
+2.
+Hll---------byte code(abc.class)--------JVM---------MLL 
+    compiler
+Hll--High level Language
+Mll--Machine level language
+JVM - java virtual machine
+Bytecode:
+
+When you write a Java program, it's first converted (compiled) into bytecode by the Java compiler (part of the JDK).
+Bytecode is an intermediate representation of your Java program that is not specific to any type of computer, operating system, or processor. It's a universal language for the Java Virtual Machine (JVM).
+Java Virtual Machine (JVM):
+
+The JVM is a key component that allows Java to be platform-independent.
+Each operating system (Windows, Linux, macOS) has its own version of the JVM.
+When you run a Java program, the JVM reads the bytecode and translates it into machine code that the current computer understands, without changing the Java program itself.
+This means the same Java program can run on any device that has a JVM, making Java programs highly portable across different platforms.
+Standardized Libraries:
+
+Java comes with a large set of standard libraries that provide functionality for programming tasks such as networking, file handling, graphical user interfaces, and much more.
+These libraries are the same across all platforms, ensuring that Java programs can use them regardless of the underlying operating system.
+When a Java program uses these libraries, the JVM takes care of translating the library calls into the appropriate OS-specific operations.
+
+3.   
+									JRE
+  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  +										+
+  +  +++++++++++++++++          +++++++++++++++++       +++++++++++++++++	+
+  +  +		     +		+		+	+		+	+
+  +  +		     +		+		+	+		+	+
+  +  + 		     +		+		+	+		+	+
+  +  +		     +		+		+	+		+	+
+  +  +		     +		+		+	+		+	+
+  +  +---------------+		+--------------	+	+		+	+
+  +  +	.class 	     +		+	main	+	+		+	+
+  +  +	file         +		+	method	+	+		+	+
+  +  +-------------- +		+---------------+	+		+	+
+  +  +		     +		+		+	+		+	+
+  +  +		     +		+ Stack area	+	+  Heap	+	+	+
+  +  +	Method area  +		+		+	+	Memory	+	+
+  +  +++++++++++++++++		+++++++++++++++++	+++++++++++++++++	+
+  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++					+
+  +				JVM						+
+  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Writing the Java Program: The process starts with writing a Java program, which is saved with a .java extension. This file contains the source code written in the Java programming language.
+
+Compilation: The Java compiler (javac) compiles the .java source files into bytecode, which is stored in .class files. Bytecode is a platform-independent code that can be run on any device equipped with a JVM. This compilation step is necessary because the JVM does not understand Java source code directly.
+
+Loading: When we run the Java program, the JVM loads the compiled .class files (bytecode) into the memory. The Class Loader component of the JVM is responsible for this step. It locates and loads the class files needed to execute the program.
+
+Linking: After loading the classes, the JVM performs the linking process, which involves verifying the bytecode (to ensure it's properly formed and adheres to JVM norms), preparing (allocating memory for class variables and initializing them), and optionally resolving (transforming symbolic memory references into direct memory references) the classes.
+
+Initialization: During initialization, the JVM initializes class variables to their proper starting values. This step is also where static blocks are executed.
+
+Execution: The JVM executes the bytecode. The Execution Engine component of the JVM interprets the bytecode into machine instructions that can be directly executed by the machine's CPU. In some JVM implementations, Just-In-Time (JIT) compilation is used to compile bytecode into native machine code dynamically, at runtime, to improve performance. This native code is then executed by the host machine.
+
+Runtime: During program execution, the JVM manages the program's memory and resource needs through its components, like the garbage collector (which reclaims memory used by objects that are no longer needed) and the stack (which keeps track of method calls and local variables).
+
+Shutdown: Once the program has completed execution, the JVM shuts down, releasing any resources allocated during the process.
+
+4.
+Varargs, short for variable-length arguments, is a feature of the Java programming language that allows a method to accept an arbitrary number of arguments of a specified type. Varargs were introduced in Java 5 to provide a more flexible way to handle method calls that require a variable number of parameters.
+
+Syntax:
+To define a varargs method, add the ellipsis (...) operator to the end of the parameter type for the varargs parameter.
+The syntax looks like this:
+returnType methodName(dataType... variableName) {
+    // method body
+}
+
+Use Case
+A common use case for varargs is when writing utility methods that can operate on any number of arguments, such as methods for calculating the sum, minimum, or maximum of numbers, or methods for concatenating strings.
+Flexible Parameter Count: With varargs, you don’t need to know in advance how many arguments will be passed to the method.
+Less Code: Instead of creating overloaded methods or using arrays, varargs simplifies the code.
+
+ex:-
+class VarargsExample1 {
+    static void display(String... values) {
+        System.out.println("display method invoked");
+    }
+
+    public static void main(String[] args) {
+        display(); // Zero arguments
+        display("my", "name", "is", "varargs"); // Four arguments
+    }
+}
+
+o/p:-
+display method invoked
+display method invoked
+
+5.
+
+There are 2 types of variables
+a. Based on the type of value variable holds
+b. Based on the behaviour and position of its declaration
+
+Based on the type of value variable holds
+-> We have 2 types
+a. primitive type
+b. reference type
+
+Primitive type
+=> These are the variables which holds primitive values
+eg: int x= 10; boolean isMarried = false; double avg=53.5;
+
+Reference type
+=> These are the variables which holds the address of the objects, or these
+varaible are used to refer the objects
+eg: Student std = new Student();
+Employee emp = new Employee();
+
+Based on the behaviour and position of its declaration
+-> we have 3 types
+a. instance variable
+b. static variable
+c. local variable
+
+a. instance variable
+These are varaibles which are written inside the class,but outside the
+method.
+instance variables are such variables whose value changes from object to
+object.
+
+ex:-
+class Test
+{
+boolean isMarried;
+public static void main(String[] args)
+{
+System.out.println(new Test().isMarried);//false
+}
+}
+
+b.static variable
+These are varaibles which are written inside the class,but outside the method
+with an access modifer called "static".
+static variables are such variables whose value does not changes from
+object to object.
+
+ex:-
+class Test{
+static int i =10;
+public static void main(String[] args)
+{
+System.out.println(i);
+System.out.println(new Test().i);
+System.out.println(Test.i);
+}
+}
+10 10 10
+
+c.Local varaibale
+These variables are also called as "Temporary variables/stack variables".
+=> Local variables will be created during the method execution inside stack and
+they will be destoryed once the control comes out
+of method execution.
+
+ex:-
+class Test
+{
+//Pre-Defined Method[Entry point/Driving Code]
+public static void main(String[] args)
+{
+int x = 10;
+int y = 20;
+add(x,y);//local variables
+}
+static void add(int a, int b)
+{
+int c = a+b;//local variables
+System.out.println(c);
+}
+}
+
+6.
+   
+									JRE
+  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  +										+
+  +  +++++++++++++++++          +++++++++++++++++       +++++++++++++++++	+
+  +  +		     +		+		+	+		+	+
+  +  +		     +		+		+	+		+	+
+  +  + 		     +		+		+	+		+	+
+  +  +		     +		+		+	+		+	+
+  +  +		     +		+		+	+		+	+
+  +  +---------------+		+--------------	+	+		+	+
+  +  +	.class 	     +		+	main	+	+		+	+
+  +  +	file         +		+	method	+	+		+	+
+  +  +-------------- +		+---------------+	+		+	+
+  +  +		     +		+		+	+		+	+
+  +  +		     +		+ Stack area	+	+  Heap	+	+	+
+  +  +	Method area  +		+		+	+	Memory	+	+
+  +  +++++++++++++++++		+++++++++++++++++	+++++++++++++++++	+
+  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++					+
+  +				JVM						+
+  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Method Area: This memory area stores class-level information such as class names, information about the immediate parent class, methods and constructors' information, and static variables. It is shared among all threads.
+
+Heap Area: The JVM heap is a runtime data area from which memory for all class instances (objects) and arrays is allocated. It is created at the JVM start-up. The heap is shared among all threads and is the subject of garbage collection, meaning that objects no longer referenced can be reclaimed to free up space.
+
+Stack Area: Each thread in a Java application has its own stack, created at the same time as the thread. The stack stores frames—a sort of data structure that holds local variables, partial results, and plays a part in method invocation and return. Because the stack is LIFO (Last In, First Out), it's efficient at keeping track of method calls and local variables.
+
+Program Counter (PC) Register: This is a small memory area where the JVM stores the address of the Java virtual machine instruction currently being executed. Each thread has its own PC Register to hold the address of the current instruction being executed by that thread.
+
+Native Method Stack: Similar to the Java Stack, this stack supports native code execution (code that is not written in Java, such as C or C++ code invoked through the Java Native Interface). Each thread has its own native method stack.
+
+7.
+A Just-In-Time (JIT) compiler is a crucial component of the Java Runtime Environment (JRE) and other programming platforms. 
+
+Purpose and Function:
+The JIT compiler optimizes the performance of Java applications during runtime.
+Instead of interpreting bytecode every time a method is invoked, the JIT compiler compiles the bytecode into native machine code specific to the running machine.
+By doing so, it improves execution speed and reduces overhead compared to repeated bytecode interpretation by the Java Virtual Machine (JVM).
+
+Working:
+Java uses bytecode for cross-platform execution.
+Bytecode must be converted to native machine language for execution.
+The JIT compiler interacts with the JVM at runtime and compiles suitable bytecode sequences into native machine code.
+This allows the hardware to execute native code directly, resulting in performance gains.
+Simple optimizations are performed during compilation, such as data analysis, register allocation, and elimination of common sub-expressions.
+
+Benefits:
+Performance: JIT compilation enhances execution speed.
+Dynamic Activation: The JIT compiler activates when a method is invoked.
+Direct Calls: For compiled methods, the JVM directly calls the compiled code instead of interpreting it.
+
+Limitations:
+Restricted View: The JIT compiler’s view of the program is limited, preventing certain optimizations.
+Overhead: Excessive optimization can increase execution time.
+
+
+
