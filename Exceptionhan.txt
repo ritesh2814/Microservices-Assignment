@@ -358,47 +358,6 @@ class Circle extends Shape {
 }
 The Shape class is abstract, and its area() method is overridden in the Circle subclass.
 
-final:Final classes, methods, or variables cannot be further extended, overridden, or modified.
-Example:
-final class Constants {
-    static final double PI = 3.14159;
-}
-The Constants class cannot be subclassed, and PI is a constant value.
-
-static:Static members belong to the class itself, not to instances. They can be accessed using the class name.
-Example:
-class MathUtils {
-    static int add(int a, int b) {
-        return a + b;
-    }
-}
-The add() method is called using MathUtils.add(5, 3).
-
-transient: Transient variables are not serialized during object serialization.
-Example:
-class Person implements Serializable {
-    transient String password;
-}
-The password field won’t be serialized when saving Person objects.
-
-volatile: Volatile variables are used for thread synchronization. Their values are read directly from memory.
-Example:
-class Counter {
-    private volatile int count;
-    void increment() {
-        count++;
-    }
-}
-The count variable is volatile for thread-safe access.
-
-strictfp:Strict floating-point mode ensures consistent floating-point calculations across different platforms.
-Example:
-strictfp class Calculator {
-    strictfp double divide(double a, double b) {
-        return a / b;
-    }
-}
-The divide() method adheres to strict floating-point rules.
 
 
 11.
