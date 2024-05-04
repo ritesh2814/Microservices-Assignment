@@ -1,0 +1,419 @@
+1. An exception in the Java programming language is an unanticipated or unusual event that transpires during the execution of a program, which disrupts the conventional flow of the program's instructions. Exceptions are generated as objects in Java, known as exception objects, which encapsulate information related to the exception, including its name, description, and the state of the program when the exception was triggered.
+
+Exceptions can be caught and managed by the program, allowing it to continue executing or to terminate gracefully. When an exception occurs within a method, it is propagated up the call stack until it is either caught and handled or it reaches the top-level of the application, at which point the JVM will terminate the program if the exception is not handled.
+
+
+2. 
+Exceptions are occurrences that disrupt the normal flow of a program's execution. They can be classified into two main types: 
+
+a)Built-in exceptions
+
+Built-in exceptions also known as predefined exceptions, are part of Java's standard libraries and are designed to handle specific error scenarios. 
+
+Examples of built-in exceptions include ArithmeticException, ArrayIndexOutOfBoundsException, ClassNotFoundException, FileNotFoundException, IOException, InterruptedException, NoSuchFieldException, NoSuchMethodException, NullPointerException, NumberFormatException, and RuntimeException.
+
+b)user-defined exceptions are exceptions created by programmers to address specific situations not covered by built-in exceptions. To create a user-defined exception, a programmer must define a new exception class that extends the Exception class and provide appropriate constructors.
+
+
+Exceptions in Java can also be categorized 
+a)checked exceptions
+Checked exceptions are detected by the compiler at compile time and typically represent recoverable errors that must be handled by the programmer. 
+Examples of checked exceptions include ClassNotFoundException, InterruptedException, and IOException.
+
+b)unchecked exceptions are not checked by the compiler at compile time and are thrown at runtime. They do not require explicit handling by the programmer. Examples of unchecked exceptions in Java are ArithmeticException, NullPointerException, and ArrayIndexOutOfBoundsException.
+
+3.
+i)This Exception object will be handed over to jvm, now jvm will check whether the method has the handling code or not,if it is not available then that method will be abnormally terminated. since it is a method, it will propogate the exception object to caller method.
+
+ii)Now jvm will check whether the caller method is having the code of caller method or not if it is not available, then that method will be abnormally terminated.
+
+iii)Simiar way if the exception object is propogated to main(), jvm will check whether the main() is having a code for handling or not, if not then the exception object will be propogated to JVM by terminating the main().
+
+iv)JVM now will handover the exception object to "Default exception handler", the duty of "default exception handler" is to just print the exception object details in the following way
+
+Exception in thread "main" java.lang.ArithmeticException:/ by zero
+at TestApp.doMoreStuff
+at TestApp.doStuff
+at TestApp.main
+
+EX-
+class Demo{
+public static void main(String[] args){
+System.out.println("Entering main");
+doStuff();
+System.out.println("Exiting main");
+}
+public static void doStuff(){
+System.out.println("Entering doStuff");
+doMoreStuff();
+System.out.println(10/0");
+System.out.println("Exiting doStuff");
+}
+public static void doMoreStuff(){
+System.out.println("Entering doMoreStuff");
+System.out.println("hello");
+System.out.println("Exiting doMoreStuff");
+}
+}
+Output::
+Entering main
+Entering doStuff
+Entering doMoreStuff
+Hello
+Exiting doMoreStuff
+Exception in thread "main" java.lang.ArithmeticException : / by zero
+at TestApp.doStuff()
+TestApp.main()
+
+Try-Catch Blocks:
+Try-catch blocks are used to handle exceptions within a specific portion of code. The code that might throw an exception is enclosed within the try block, and the catch block catches and handles any exceptions that occur.
+
+
+public class TryCatchExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("An arithmetic exception occurred: " + e.getMessage());
+        }
+    }
+}
+
+
+Throws Keyword:
+The throws keyword is used in method signatures to indicate that the method might throw certain exceptions. When a method uses throws, it's basically saying, "I might encounter this kind of problem, and I won't handle it here; whoever calls me needs to handle it."
+
+
+import java.io.FileNotFoundException;
+public class ThrowsExample {
+    public static void main(String[] args) throws FileNotFoundException {
+        readFile(); 
+    }
+
+    public static void readFile() throws FileNotFoundException {
+        throw new FileNotFoundException("File not found"); 
+    }
+}
+In this example, the readFile() method is declared with throws FileNotFoundException, indicating that it might throw this exception. When calling this method, the main method also needs to declare that it might throw this exception.
+
+4.
+Exception class plays a crucial role in handling errors and exceptional situations that may occur during program execution. While the Exception class itself does not define unique methods beyond those inherited from its parent classes, there are several commonly used methods when working with exceptions in Java.
+
+getMessage(): This method retrieves the detail message associated with the exception. It provides additional information about the exception's cause or nature.
+Example:
+try {
+    // Code that may throw an exception
+} catch (Exception e) {
+    System.out.println("Error message: " + e.getMessage());
+}
+printStackTrace(): This method prints the stack trace of the exception to the standard error stream. It displays a chronological list of method calls leading to the point where the exception occurred, aiding in debugging.Example:
+
+try {
+    // Code that may throw an exception
+} catch (Exception e) {
+    e.printStackTrace();
+}
+toString(): The toString() method provides a string representation of the exception, usually containing the class name and the detail message.
+Example:
+try {
+    // Code that may throw an exception
+} catch (Exception e) {
+    System.out.println("Exception occurred: " + e.toString());
+}
+
+getCause(): This method returns the cause of the exception, if any. It enables nested exceptions, allowing for more comprehensive error reporting.
+Example:
+try {
+    // Code that may throw an exception
+} catch (Exception e) {
+    Throwable cause = e.getCause();
+    if (cause != null) {
+        System.out.println("Root cause: " + cause.toString());
+    }
+}
+getStackTrace(): The getStackTrace() method retrieves an array of stack trace elements, representing each method call leading to the exception.
+Example:
+try {
+    // Code that may throw an exception
+} catch (Exception e) {
+    StackTraceElement[] stackTrace = e.getStackTrace();
+    for (StackTraceElement element : stackTrace) {
+        System.out.println(element.toString());
+    }
+}
+
+initCause(Throwable cause): This method initializes the cause of the exception, allowing one exception to be nested within another.
+Example:
+try {
+    // Code that may throw an exception
+} catch (Exception e) {
+    IOException ioException = new IOException("IO error occurred");
+    e.initCause(ioException);
+    throw e;
+}
+
+
+
+5.
+A runtime exception refers to an exception that arises during the execution of a program. Unlike checked exceptions, which mandate explicit handling either through catching or declaring in the method signature, runtime exceptions are unchecked. They do not require such handling, allowing them to propagate up the call stack until encountered by an appropriate exception handler or until they terminate program execution.
+
+Runtime exceptions commonly denote programming errors, logical inconsistencies, or unforeseen circumstances occurring during runtime. Examples include division by zero, accessing array indices beyond their bounds, or invoking methods on null references.
+
+These exceptions belong to the hierarchy of RuntimeException or its subclasses. They manifest as a consequence of flawed code logic or exceptional runtime conditions, rather than issues anticipated during compile-time verification.
+
+public class RuntimeExceptionExample {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3};
+        System.out.println(numbers[3]); // Accessing an index that doesn't exist
+        
+        // NullPointerException
+        String str = null;
+        System.out.println(str.length()); 
+}
+}
+
+6.
+Definition:
+The throw keyword is used to explicitly throw an exception from within a method or a block of code.
+The throws keyword, on the other hand, is used in the method signature to declare an exception that might be thrown by the function during code execution.
+
+Type of Exception:
+With the throw keyword, we can only propagate unchecked exceptions (i.e., checked exceptions cannot be propagated using throw alone).
+Using the throws keyword, we can declare both checked and unchecked exceptions. However, the throws keyword can be used to propagate checked exceptions only.
+
+Syntax:
+The throw keyword is followed by an instance of an Exception (or its subclass) that needs to be thrown.
+The throws keyword is followed by the class names of exceptions that can be thrown (separated by commas if there are multiple).
+
+Declaration:
+throw is used within the method body.
+throws is used in the method signature.
+
+Internal Implementation:
+We can throw only one exception at a time using throw.
+With the throws keyword, we can declare multiple exceptions that can be thrown by the method.
+
+Examples: 
+Using throw:
+public class TestThrow {
+    public static void checkNum(int num) {
+        if (num < 1) {
+            throw new ArithmeticException("\nNumber is negative, cannot calculate square");
+        } else {
+            System.out.println("Square of " + num + " is " + (num * num));
+        }
+    }
+
+    public static void main(String[] args) {
+        TestThrow obj = new TestThrow();
+        obj.checkNum(-3);
+        System.out.println(" code");
+    }
+}
+
+Using Throws:
+public class TestThrows {
+    public static int divideNum(int m, int n) throws ArithmeticException {
+        int div = m / n;
+        return div;
+    }
+
+    public static void main(String[] args) {
+        TestThrows obj = new TestThrows();
+        try {
+            System.out.println(obj.divideNum(45, 0));
+        } catch (ArithmeticException e) {
+            System.out.println("\nNumber cannot be divided by 0");
+        }
+        System.out.println(" code..");
+    }
+}
+
+
+7.In Java programming, errors and exceptions are both types of issues that can arise during program execution, but they serve distinct purposes and require different handling approaches.
+
+Errors:
+Errors denote severe problems that usually lie beyond the control of the program, such as system failures, resource depletion, or critical flaws in the code.
+Errors are generally considered unrecoverable, and it's generally not advisable to attempt to handle them programmatically since doing so might lead to unpredictable behavior.
+Examples of errors include OutOfMemoryError, StackOverflowError, and VirtualMachineError.
+
+Exceptions:
+Exceptions represent exceptional conditions that occur during program execution but are typically recoverable or can be handled gracefully.
+Exceptions are intended to be caught and managed by the program, either locally or by propagating them to higher levels for handling.
+
+Exceptions can be divided into two main categories: checked exceptions and unchecked exceptions.
+Checked exceptions must either be caught using try-catch blocks or declared in the method signature using the throws clause. These include IO exceptions like IOException or database access issues like SQLException.
+Unchecked exceptions, also known as runtime exceptions, do not require explicit handling or declaration. Examples include NullPointerException, ArrayIndexOutOfBoundsException, and ArithmeticException.
+
+8.The exception hierarchy in Java is a well-defined structure that categorizes different types of exceptions. This hierarchy is crucial for understanding and handling exceptions effectively in Java programming.
+
+Throwable Class
+At the root of the exception hierarchy is the Throwable class, which serves as the superclass for all exceptions and errors in Java. The Throwable class has two main subclasses: Error and Exception.
+
+Error Class
+The Error class represents serious problems that are generally beyond the control of the program, such as system failures or resource exhaustion. Examples of Error subclasses include OutOfMemoryError, VirtualMachineError, and AssertionError.
+java.lang.Error
+java.lang.VirtualMachineError
+java.lang.OutOfMemoryError
+java.lang.StackOverflowError
+java.lang.InternalError
+java.lang.AssertionError
+java.lang.LinkageError
+java.lang.ClassCircularityError
+java.lang.ClassFormatError
+java.lang.ThreadDeath
+
+Exception Class
+The Exception class represents recoverable exceptions that can occur during the execution of a program. This class is further divided into two main subclasses: checked exceptions and unchecked exceptions.
+
+Checked Exceptions
+Checked exceptions are exceptions that are checked by the compiler at compile-time. They are a subclass of the Exception class, excluding the RuntimeException class and its subclasses. Examples of checked exceptions include IOException, SQLException, and ClassNotFoundException. Checked exceptions must be either handled using a try-catch block or declared in the method's throws clause.
+
+Unchecked Exceptions
+Unchecked exceptions are exceptions that are not checked by the compiler at compile-time. They are a subclass of the RuntimeException class, which is a subclass of the Exception class. Examples of unchecked exceptions include NullPointerException, ArrayIndexOutOfBoundsException, and ArithmeticException. Unchecked exceptions are not required to be handled or declared, but it is generally a good practice to do so.
+
+9.
+A package in Java is a mechanism to encapsulate a group of related classes, subpackages, and interfaces.
+Packages serve several purposes:
+
+Preventing Naming Conflicts: They allow us to avoid naming conflicts by organizing classes into separate namespaces. For example, if there are two classes named Employee in different packages (e.g., college.staff.cse.Employee and college.staff.ee.Employee), the package structure ensures uniqueness.
+
+Ease of Locating and Usage: Packages make it easier to locate and use classes, interfaces, enumerations, and annotations. We can import classes from existing packages and reuse them in our programs.
+
+Controlled Access: Packages provide access control levels. For instance: protected members are accessible by classes in the same package and their subclasses Default (package-private) members are accessible only within the same package.
+
+Data Encapsulation: By grouping related classes into packages, we achieve data encapsulation (or data hiding).
+
+How Packages Work?
+Package names correspond to directory structures. For example: If a package name is college.staff.cse, there are three directories: college, staff, and cse. The directory college is accessible through the CLASSPATH variable.
+
+Package naming conventions:
+Packages are named in reverse order of domain names (e.g., org.geeksforgeeks.practice). In a college, recommended conventions include college.tech.cse, college.tech.ee, and college.art.history.Use the package name at the top of the program. Save the file in the package directory. we can define a new public class in a separate Java file or add it to an existing .java file and recompile.
+
+Subpackages: Subpackages are packages within another package.They are not imported by default and must be explicitly imported. Members of a subpackage have no access privileges; they are considered a different package for protected and default access specifiers.
+Example:
+Suppose we want to use the Vector class from the util package:
+Import the Vector class: import java.util.Vector;
+Import all classes from the util package: import java.util.*;
+
+10.
+Access modifiers determine the visibility and accessibility of classes, methods, variables, constructors, and other members within a program. Let’s explore each of the 11 access modifiers along with examples:
+
+public: Public members are accessible from any class or package.
+Example:
+public class Dog {
+    public void bark() {
+        System.out.println("Woof!");
+    }
+}
+Here, the bark() method is accessible from any other class.
+
+private:Private members are only accessible within the same class.
+Example:
+class Data {
+    private String name;
+}
+public class Main {
+    public static void main(String[] args) {
+        Data d = new Data();
+        // Error: 'name' has private access in Data
+        d.name = "Programiz";
+    }
+}
+The name variable is private and cannot be accessed directly. We use getter and setter methods to access it.
+
+protected: Protected members are visible within the same package or in subclasses (even if they are in different packages).
+Example:
+package animals;
+public class Animal {
+    protected void eat() {
+        System.out.println("Animal is eating.");
+    }
+}
+The eat() method is accessible within the animals package and its subclasses.
+
+Default (Package-Private): Default members (no explicit modifier) are visible only within the same package.
+Example:
+package defaultPackage;
+class Logger {
+    void message() {
+        System.out.println("This is a message");
+    }
+}
+The Logger class is accessible only within the defaultPackage package.
+
+abstract:Abstract classes and methods cannot be instantiated directly. They provide a blueprint for subclasses to implement.
+Example:
+abstract class Shape {
+    abstract double area();
+}
+class Circle extends Shape {
+    double radius;
+    Circle(double r) {
+        radius = r;
+    }
+    double area() {
+        return Math.PI * radius * radius;
+    }
+}
+The Shape class is abstract, and its area() method is overridden in the Circle subclass.
+
+final:Final classes, methods, or variables cannot be further extended, overridden, or modified.
+Example:
+final class Constants {
+    static final double PI = 3.14159;
+}
+The Constants class cannot be subclassed, and PI is a constant value.
+
+static:Static members belong to the class itself, not to instances. They can be accessed using the class name.
+Example:
+class MathUtils {
+    static int add(int a, int b) {
+        return a + b;
+    }
+}
+The add() method is called using MathUtils.add(5, 3).
+
+transient: Transient variables are not serialized during object serialization.
+Example:
+class Person implements Serializable {
+    transient String password;
+}
+The password field won’t be serialized when saving Person objects.
+
+volatile: Volatile variables are used for thread synchronization. Their values are read directly from memory.
+Example:
+class Counter {
+    private volatile int count;
+    void increment() {
+        count++;
+    }
+}
+The count variable is volatile for thread-safe access.
+
+strictfp:Strict floating-point mode ensures consistent floating-point calculations across different platforms.
+Example:
+strictfp class Calculator {
+    strictfp double divide(double a, double b) {
+        return a / b;
+    }
+}
+The divide() method adheres to strict floating-point rules.
+
+
+11.
+Non-access modifiers are keywords used to specify additional properties or behaviors of classes, methods, or fields beyond their basic accessibility. These modifiers do not control access to the member but rather affect other aspects of their behavior or implementation. Some common non-access modifiers in Java include:
+
+Final: Declaring a variable, method, or class as final means it cannot be changed or overridden. For variables, it means the value cannot be altered once assigned. For methods, it means the method cannot be overridden in subclasses. For classes, it means the class cannot be subclassed.
+
+Static: Declaring a variable, method, or nested class as static means it belongs to the class itself rather than instances of the class. Static members can be accessed without creating an instance of the class.
+
+Abstract: Declaring a class as abstract means it cannot be instantiated directly and often contains one or more abstract methods (methods without implementation) that must be implemented by subclasses.
+
+Synchronized: Applying the synchronized modifier to a method or block ensures that only one thread can access that method or block at a time, which helps in preventing data corruption in multithreaded environments.
+
+Transient: Declaring a variable as transient means it will not be serialized when the object is serialized. This is useful for variables that hold temporary or sensitive data that should not be saved.
+
+Volatile: Declaring a variable as volatile indicates that its value may be changed by multiple threads concurrently. Access to volatile variables ensures that the most up-to-date value is always read and written.
+
+
